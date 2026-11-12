@@ -4,110 +4,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خلیج مارکت | فروشگاه آنلاین</title>
+<meta name="theme-color" content="#073b4c">
+<title>خلیج مارکت | بازار آنلاین</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial;background:#f5f7fa;color:#202b3c}
-header{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0001}
-.logo{font-size:23px;font-weight:bold;color:#087e8b}
-.cart{background:#087e8b;color:white;padding:10px 15px;border-radius:12px}
-.search{padding:18px 5%;background:#fff}
-.search input{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;font-size:15px}
-.hero{margin:18px 5%;padding:35px 20px;border-radius:20px;background:linear-gradient(120deg,#073b4c,#087e8b);color:white}
-.hero h1{font-size:27px;margin:0 0 12px}
-.hero p{line-height:2}
-.categories{display:flex;gap:10px;overflow:auto;padding:10px 5%}
-.categories button{white-space:nowrap;border:0;background:white;padding:12px 18px;border-radius:12px;color:#087e8b}
-h2{padding:0 5%;font-size:21px}
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:10px 5% 30px}
-.product{background:white;border-radius:16px;padding:12px;box-shadow:0 3px 12px #0000000b}
-.pic{height:115px;border-radius:12px;background:#e8f5f5;display:grid;place-items:center;font-size:55px}
-.product h3{font-size:15px}
-.price{color:#087e8b;font-weight:bold}
-.product button{width:100%;padding:10px;border:0;border-radius:10px;background:#087e8b;color:white}
-footer{text-align:center;background:#102c3c;color:white;padding:25px;line-height:2}
+body{margin:0;background:#f5f7fa;color:#182b3a;font-family:Tahoma,Arial,sans-serif}
+button,input{font-family:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.topbar{background:#073b4c;color:white;text-align:center;padding:10px;font-size:12px}
+header{background:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0000000b}
+.head{max-width:1200px;margin:auto;padding:17px 20px;display:flex;align-items:center;gap:22px}
+.logo{font-size:25px;font-weight:bold;color:#087e83;white-space:nowrap}
+.logo span{font-size:30px}
+.search{flex:1;display:flex;background:#f2f5f7;border:1px solid #e1e7eb;border-radius:12px;overflow:hidden}
+.search input{width:100%;border:0;background:transparent;padding:14px;outline:none;font-size:14px}
+.search button{border:0;background:#087e83;color:white;padding:0 20px;font-size:18px}
+.cartbtn{border:0;border-radius:12px;background:#073b4c;color:white;padding:13px 18px;font-size:14px;white-space:nowrap}
+nav{border-top:1px solid #eee}
+.navinner{max-width:1200px;margin:auto;display:flex;gap:25px;padding:13px 20px;overflow-x:auto;white-space:nowrap;font-size:13px}
+.navinner a:hover{color:#087e83}
+main{max-width:1200px;margin:auto;padding:25px 20px}
+.hero{background:linear-gradient(110deg,#073b4c,#087e83);border-radius:22px;color:white;min-height:290px;padding:45px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+.hero h1{font-size:32px;line-height:1.8;margin:0 0 10px}
+.hero p{font-size:15px;line-height:2;color:#e0f4f2}
+.hero .cta{display:inline-block;background:#f5b544;color:#173442;padding:13px 24px;border-radius:10px;font-weight:bold;margin-top:15px}
+.hero-art{font-size:115px;filter:drop-shadow(0 15px 15px #00252c66)}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:35px 0 18px}
+.section-title h2{font-size:21px;margin:0}
+.section-title small{color:#71818d}
+.categories{display:flex;gap:12px;overflow-x:auto;padding:4px 0 12px}
+.chip{border:1px solid #e1e6eb;background:white;color:#344b59;border-radius:30px;padding:11px 20px;white-space:nowrap}
+.chip.active,.chip:hover{background:#087e83;color:white;border-color:#087e83}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:white;border-radius:17px;padding:12px;box-shadow:0 4px 18px #142b3a0b;transition:.2s;min-width:0}
+.product:hover{transform:translateY(-4px);box-shadow:0 10px 25px #142b3a14}
+.product img{width:100%;height:175px;object-fit:cover;border-radius:12px;background:#edf3f4}
+.product h3{font-size:14px;margin:14px 4px 8px}
+.product p{font-size:11px;color:#84919a;line-height:1.8;margin:4px}
+.price{font-weight:bold;color:#087e83;font-size:15px;margin:12px 4px}
+.add{width:100%;border:0;background:#073b4c;color:white;padding:12px;border-radius:10px;font-size:12px}
+.add:hover{background:#087e83}
+.offer{background:#fff5df;border-radius:16px;padding:22px;margin-top:32px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.offer strong{font-size:18px;color:#77521b}
+footer{background:#073b4c;color:white;margin-top:45px;padding:35px 20px;text-align:center;line-height:2}
+footer p{color:#c6d9df;font-size:12px}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:30}
+.overlay.show{display:block}
+.drawer{position:fixed;z-index:31;top:0;bottom:0;left:-420px;width:min(400px,90%);background:white;padding:22px;transition:.25s;overflow:auto}
+.drawer.show{left:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px}
+.close{border:0;background:#f0f3f5;border-radius:8px;padding:9px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:15px 0;gap:8px;font-size:13px}
+.cart-item button{border:0;background:#f3f5f6;border-radius:6px;padding:5px 9px}
+.total{font-weight:bold;font-size:18px;margin:22px 0;color:#087e83}
+.checkout{width:100%;background:#087e83;color:white;border:0;border-radius:10px;padding:14px}
+.empty{text-align:center;color:#87939c;padding:40px 0}
+@media(max-width:800px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.head{gap:10px;flex-wrap:wrap}
+.logo{font-size:21px}
+.search{order:3;flex-basis:100%}
+.hero{padding:28px;min-height:235px}
+.hero h1{font-size:24px}
+.hero-art{font-size:75px}
+.product img{height:145px}
+}
+@media(max-width:380px){
+main{padding:15px 12px}
+.hero-art{font-size:55px}
+.hero h1{font-size:20px}
+}
 </style>
 </head>
 <body>
+
+<div class="topbar">به خلیج مارکت خوش آمدید | تجربه خریدی آسان و لذت‌بخش</div>
+
 <header>
-<div class="logo">🌊 خلیج مارکت</div>
-<div class="cart">🛒 سبد خرید: <span id="count">0</span></div>
+<div class="head">
+<a class="logo" href="#">🌊 خلیج مارکت</a>
+<div class="search">
+<input id="search" placeholder="جست‌وجوی محصولات..." oninput="renderProducts()">
+<button onclick="renderProducts()">⌕</button>
+</div>
+<button class="cartbtn" onclick="openCart()">🛒 سبد خرید <span id="count">۰</span></button>
+</div>
+<nav>
+<div class="navinner">
+<a href="#home">صفحه اصلی</a>
+<a href="#categories">دسته‌بندی‌ها</a>
+<a href="#products">محصولات</a>
+<a href="#offers">پیشنهادهای ویژه</a>
+<a href="#footer">درباره ما</a>
+</div>
+</nav>
 </header>
 
-<div class="search">
-<input id="search" placeholder="🔍 جست‌وجوی محصولات..." oninput="filterProducts()">
-</div>
-
+<main id="home">
 <section class="hero">
-<h1>به خلیج مارکت خوش آمدید!</h1>
-<p>دنیایی از محصولات جذاب و خاص؛
-خریدی آسان، لذت‌بخش و متفاوت را تجربه کنید.</p>
+<div>
+<h1>بازار بزرگ خلیج مارکت</h1>
+<p>دنیایی از انتخاب‌های متنوع، محصولات جذاب<br>و تجربه‌ای متفاوت از خرید آنلاین.</p>
+<a class="cta" href="#products">مشاهده محصولات ←</a>
+</div>
+<div class="hero-art">🛍️</div>
 </section>
 
-<div class="categories">
-<button onclick="showCategory('all')">همه محصولات</button>
-<button onclick="showCategory('food')">🍦 خوراکی</button>
-<button onclick="showCategory('other')">🎁 محصولات دیگر</button>
+<div class="section-title" id="categories">
+<h2>دسته‌بندی محصولات</h2>
+<small>انتخاب آسان‌تر، خرید بهتر</small>
 </div>
+<div class="categories" id="chips"></div>
 
+<div class="section-title" id="products">
 <h2>⭐ محصولات منتخب</h2>
-<section class="products" id="products">
-<div class="product" data-category="food">
-<div class="pic">🍦</div>
-<h3>بستنی خشک</h3>
-<p>یک تجربه خوشمزه و متفاوت</p>
-<div class="price">قیمت: به‌زودی</div>
-<button onclick="addCart('بستنی خشک')">افزودن به سبد خرید</button>
+<small id="resultCount"></small>
 </div>
+<div class="products" id="productList"></div>
 
-<div class="product" data-category="food">
-<div class="pic">🍓</div>
-<h3>توت‌فرنگی خشک</h3>
-<p>طعم طبیعی و جذاب میوه</p>
-<div class="price">قیمت: به‌زودی</div>
-<button onclick="addCart('توت‌فرنگی خشک')">افزودن به سبد خرید</button>
+<section class="offer" id="offers">
+<div>
+<strong>✨ پیشنهادهای جذاب خلیج مارکت</strong>
+<p>محصولات جدید را کشف کنید و از خرید لذت ببرید.</p>
 </div>
-
-<div class="product" data-category="other">
-<div class="pic">🎁</div>
-<h3>محصولات ویژه</h3>
-<p>انتخاب‌هایی برای سلیقه‌های خاص</p>
-<div class="price">به‌زودی</div>
-<button onclick="addCart('محصولات ویژه')">افزودن به سبد خرید</button>
-</div>
-
-<div class="product" data-category="other">
-<div class="pic">🛍️</div>
-<h3>محصولات جدید</h3>
-<p>به‌زودی در خلیج مارکت</p>
-<div class="price">به‌زودی</div>
-<button onclick="addCart('محصولات جدید')">افزودن به سبد خرید</button>
-</div>
+<div style="font-size:40px">🎁</div>
 </section>
+</main>
 
-<footer>
-<strong>KHALIJ MARKET</strong>
-<p>خلیج مارکت؛ انتخابی متفاوت، خریدی هوشمندانه</p>
+<footer id="footer">
+<div style="font-size:24px;font-weight:bold">🌊 خلیج مارکت</div>
+<p>بازاری برای انتخاب‌های متنوع و خریدی آسان</p>
+<p>تمام حقوق این وب‌سایت محفوظ است.</p>
 </footer>
 
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+<div class="drawer-head">
+<strong>🛒 سبد خرید شما</strong>
+<button class="close" onclick="closeCart()">✕</button>
+</div>
+<div id="cartItems"></div>
+<div class="total" id="total"></div>
+<button class="checkout" onclick="checkout()">ادامه خرید</button>
+</aside>
+
 <script>
-let count=0;
-function addCart(name){
-count++;
-document.getElementById('count').textContent=count;
-alert(name+' به سبد خرید اضافه شد!');
+const products=[
+{id:1,name:"هدفون بی‌سیم",category:"دیجیتال",price:1250000,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",desc:"صدایی شفاف و طراحی زیبا"},
+{id:2,name:"ساعت مچی",category:"دیجیتال",price:890000,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",desc:"انتخابی شیک برای هر روز"},
+{id:3,name:"کیف دستی",category:"پوشاک",price:760000,image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600",desc:"زیبا و کاربردی"},
+{id:4,name:"کفش ورزشی",category:"پوشاک",price:1450000,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",desc:"مناسب استفاده روزانه"},
+{id:5,name:"چراغ رومیزی",category:"خانه",price:540000,image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600",desc:"زیبایی برای فضای خانه"},
+{id:6,name:"فنجان سرامیکی",category:"خانه",price:180000,image:"https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600",desc:"طراحی ساده و خاص"},
+{id:7,name:"عینک آفتابی",category:"اکسسوری",price:430000,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600",desc:"سبک و جذاب"},
+{id:8,name:"کوله‌پشتی",category:"اکسسوری",price:680000,image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600",desc:"همراه مناسب سفر"}
+];
+
+let selected="همه";
+let cart=[];
+
+const money=n=>new Intl.NumberFormat("fa-IR").format(n)+" تومان";
+
+function renderChips(){
+const cats=["همه",...new Set(products.map(p=>p.category))];
+document.getElementById("chips").innerHTML=cats.map(c=>
+`<button class="chip ${selected===c?'active':''}" onclick="chooseCategory('${c}')">${c}</button>`
+).join("");
 }
-function filterProducts(){
-let q=document.getElementById('search').value.trim();
-document.querySelectorAll('.product').forEach(p=>{
-p.style.display=p.innerText.includes(q)?'block':'none';
-});
+function chooseCategory(c){selected=c;renderChips();renderProducts()}
+
+function renderProducts(){
+const q=document.getElementById("search").value.trim().toLowerCase();
+const filtered=products.filter(p=>
+(selected==="همه"||p.category===selected)&&
+(p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q))
+);
+document.getElementById("resultCount").textContent=
+new Intl.NumberFormat("fa-IR").format(filtered.length)+" محصول";
+document.getElementById("productList").innerHTML=filtered.length?
+filtered.map(p=>`
+<article class="product">
+<img src="${p.image}" alt="${p.name}" loading="lazy">
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<div class="price">${money(p.price)}</div>
+<button class="add" onclick="addCart(${p.id})">افزودن به سبد خرید +</button>
+</article>`).join(""):"<p>محصولی پیدا نشد.</p>";
 }
-function showCategory(category){
-document.querySelectorAll('.product').forEach(p=>{
-p.style.display=(category==='all'||p.dataset.category===category)?'block':'none';
-});
+
+function addCart(id){
+const item=cart.find(x=>x.id===id);
+if(item)item.qty++;
+else cart.push({id,qty:1});
+updateCart();
 }
+function updateCart(){
+document.getElementById("count").textContent=
+new Intl.NumberFormat("fa-IR").format(cart.reduce((s,x)=>s+x.qty,0));
+document.getElementById("cartItems").innerHTML=cart.length?
+cart.map(x=>{
+const p=products.find(y=>y.id===x.id);
+return `<div class="cart-item">
+<div><strong>${p.name}</strong><br>${money(p.price)}<br>
+تعداد: ${new Intl.NumberFormat("fa-IR").format(x.qty)}</div>
+<div>
+<button onclick="changeQty(${p.id},-1)">−</button>
+<button onclick="changeQty(${p.id},1)">+</button>
+</div></div>`;
+}).join(""):'<div class="empty">سبد خرید شما خالی است.</div>';
+const sum=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+document.getElementById("total").textContent="مجموع: "+money(sum);
+}
+function changeQty(id,n){
+const x=cart.find(y=>y.id===id);
+if(!x)return;
+x.qty+=n;
+if(x.qty<=0)cart=cart.filter(y=>y.id!==id);
+updateCart();
+}
+function openCart(){
+document.getElementById("drawer").classList.add("show");
+document.getElementById("overlay").classList.add("show");
+}
+function closeCart(){
+document.getElementById("drawer").classList.remove("show");
+document.getElementById("overlay").classList.remove("show");
+}
+function checkout(){
+if(!cart.length){alert("سبد خرید شما خالی است.");return}
+alert("این نسخه نمایشی است. برای پرداخت واقعی باید درگاه پرداخت و سیستم ثبت سفارش راه‌اندازی شود.");
+}
+renderChips();
+renderProducts();
+updateCart();
 </script>
 </body>
 </html>
