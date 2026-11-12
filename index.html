@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خلیج مارکت | فروشگاه آنلاین</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial;background:#f5f7fa;color:#202b3c}
+header{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0001}
+.logo{font-size:23px;font-weight:bold;color:#087e8b}
+.cart{background:#087e8b;color:white;padding:10px 15px;border-radius:12px}
+.search{padding:18px 5%;background:#fff}
+.search input{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;font-size:15px}
+.hero{margin:18px 5%;padding:35px 20px;border-radius:20px;background:linear-gradient(120deg,#073b4c,#087e8b);color:white}
+.hero h1{font-size:27px;margin:0 0 12px}
+.hero p{line-height:2}
+.categories{display:flex;gap:10px;overflow:auto;padding:10px 5%}
+.categories button{white-space:nowrap;border:0;background:white;padding:12px 18px;border-radius:12px;color:#087e8b}
+h2{padding:0 5%;font-size:21px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:10px 5% 30px}
+.product{background:white;border-radius:16px;padding:12px;box-shadow:0 3px 12px #0000000b}
+.pic{height:115px;border-radius:12px;background:#e8f5f5;display:grid;place-items:center;font-size:55px}
+.product h3{font-size:15px}
+.price{color:#087e8b;font-weight:bold}
+.product button{width:100%;padding:10px;border:0;border-radius:10px;background:#087e8b;color:white}
+footer{text-align:center;background:#102c3c;color:white;padding:25px;line-height:2}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🌊 خلیج مارکت</div>
+<div class="cart">🛒 سبد خرید: <span id="count">0</span></div>
+</header>
+
+<div class="search">
+<input id="search" placeholder="🔍 جست‌وجوی محصولات..." oninput="filterProducts()">
+</div>
+
+<section class="hero">
+<h1>به خلیج مارکت خوش آمدید!</h1>
+<p>دنیایی از محصولات جذاب و خاص؛
+خریدی آسان، لذت‌بخش و متفاوت را تجربه کنید.</p>
+</section>
+
+<div class="categories">
+<button onclick="showCategory('all')">همه محصولات</button>
+<button onclick="showCategory('food')">🍦 خوراکی</button>
+<button onclick="showCategory('other')">🎁 محصولات دیگر</button>
+</div>
+
+<h2>⭐ محصولات منتخب</h2>
+<section class="products" id="products">
+<div class="product" data-category="food">
+<div class="pic">🍦</div>
+<h3>بستنی خشک</h3>
+<p>یک تجربه خوشمزه و متفاوت</p>
+<div class="price">قیمت: به‌زودی</div>
+<button onclick="addCart('بستنی خشک')">افزودن به سبد خرید</button>
+</div>
+
+<div class="product" data-category="food">
+<div class="pic">🍓</div>
+<h3>توت‌فرنگی خشک</h3>
+<p>طعم طبیعی و جذاب میوه</p>
+<div class="price">قیمت: به‌زودی</div>
+<button onclick="addCart('توت‌فرنگی خشک')">افزودن به سبد خرید</button>
+</div>
+
+<div class="product" data-category="other">
+<div class="pic">🎁</div>
+<h3>محصولات ویژه</h3>
+<p>انتخاب‌هایی برای سلیقه‌های خاص</p>
+<div class="price">به‌زودی</div>
+<button onclick="addCart('محصولات ویژه')">افزودن به سبد خرید</button>
+</div>
+
+<div class="product" data-category="other">
+<div class="pic">🛍️</div>
+<h3>محصولات جدید</h3>
+<p>به‌زودی در خلیج مارکت</p>
+<div class="price">به‌زودی</div>
+<button onclick="addCart('محصولات جدید')">افزودن به سبد خرید</button>
+</div>
+</section>
+
+<footer>
+<strong>KHALIJ MARKET</strong>
+<p>خلیج مارکت؛ انتخابی متفاوت، خریدی هوشمندانه</p>
+</footer>
+
+<script>
+let count=0;
+function addCart(name){
+count++;
+document.getElementById('count').textContent=count;
+alert(name+' به سبد خرید اضافه شد!');
+}
+function filterProducts(){
+let q=document.getElementById('search').value.trim();
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=p.innerText.includes(q)?'block':'none';
+});
+}
+function showCategory(category){
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=(category==='all'||p.dataset.category===category)?'block':'none';
+});
+}
+</script>
+</body>
+</html>
